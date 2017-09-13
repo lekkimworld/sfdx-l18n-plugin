@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Mikkel Flindt Heisterberg",
+  "author": "Mikkel Flindt Heisterberg, @lekkim",
+  "repository": "lekkimworld/sfdx-l18n-plugin",
   "website": "http://lekkimworld.com",
-  "license": "ISC"
+  "license": "MIT"
 }
