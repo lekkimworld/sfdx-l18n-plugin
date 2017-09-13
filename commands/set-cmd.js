@@ -65,52 +65,7 @@ const {
                     targetUsername = org.authConfig.username;
                     
                     // verify input by getting allowed values
-                    const apex4values = `
-                        List<Schema.PicklistEntry> locales = User.LocaleSidKey.getDescribe().getPicklistValues();
-                        List<Schema.PicklistEntry> langs = User.LanguageLocaleKey.getDescribe().getPicklistValues(); 
-                        List<Schema.PicklistEntry> tzs = User.TimeZoneSidKey.getDescribe().getPicklistValues();
-                        JSONGenerator gen = JSON.createGenerator(false);
-                        gen.writeStartObject();
-                        gen.writeFieldName('languages');
-                        gen.writeStartArray();
-                        for (Schema.PicklistEntry entry : langs) {
-                            gen.writeStartObject();
-                            gen.writeStringField('label', entry.getLabel());
-                            gen.writeStringField('value', entry.getValue());
-                            gen.writeEndObject();
-                        
-                        }
-                        gen.writeEndArray();
-                        gen.writeFieldName('locales');
-                        gen.writeStartArray();
-                        for (Schema.PicklistEntry entry : locales) {
-                            gen.writeStartObject();
-                            gen.writeStringField('label', entry.getLabel());
-                            gen.writeStringField('value', entry.getValue());
-                            gen.writeEndObject();
-                        }
-                        gen.writeEndArray();
-                        gen.writeFieldName('timezones');
-                        gen.writeStartArray();
-                        for (Schema.PicklistEntry entry : tzs) {
-                            gen.writeStartObject();
-                            gen.writeStringField('label', entry.getLabel());
-                            gen.writeStringField('value', entry.getValue());
-                            gen.writeEndObject();
-                        
-                        }
-                        gen.writeEndArray();
-                        gen.writeEndObject();
-                        gen.close();
-                        System.debug(gen.getAsString() + '<<<');`;
-                        
-                    apexUtils.runApex(apex4values, targetUsername).then((stdout) => {
-                        // get json
-                        let idx1 = stdout.indexOf('DEBUG|{');
-                        let idx2 = stdout.indexOf('<<<', idx1+6);
-                        let str = stdout.substring(idx1+6, idx2);
-                        let obj = JSON.parse(str);
-                        
+                    apexUtils.listPicklistValues(targetUsername).then(obj => {
                         // make sure we got valid values
                         let foundLocale = obj.locales.reduce((acc, obj) => {
                             if (acc) return acc;
@@ -133,7 +88,7 @@ const {
                         return Promise.resolve({"timezone": foundTimezone ? timezone : undefined, 
                             "language": foundLanguage ? language : undefined,
                             "locale": foundLocale ? locale : undefined});
-
+                            
                     }).then(({timezone, language, locale}) => {
                         if (!language && !locale && !timezone) {
                             if (returnJson) {
@@ -154,7 +109,7 @@ const {
                             }
                         })
                     }).catch ((err, stderr) => {
-                        console.log('apexLogListCommand:stderr', stderr);
+                        console.log('apexLogListCommand:stderr', err, stderr);
                     });
                     
                 })
