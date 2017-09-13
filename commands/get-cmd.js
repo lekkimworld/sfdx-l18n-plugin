@@ -8,7 +8,7 @@ const {
     'use strict';
   
     module.exports = {
-        topic: 'config',
+        topic: 'user',
         command: 'get',
         description: 'gets localization info for the current user',
         help: 'help text for l18n:config:get',

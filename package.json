@@ -1,11 +1,12 @@
 {
-  "name": "sfdx_locale_plugin",
+  "name": "sfdx-l18n-plugin",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Mikkel Flindt Heisterberg",
+  "website": "http://lekkimworld.com",
   "license": "ISC"
 }
