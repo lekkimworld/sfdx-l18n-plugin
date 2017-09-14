@@ -1,13 +1,13 @@
 {
   "name": "sfdx-l18n-plugin",
   "version": "1.0.0",
-  "description": "",
+  "description": "SalesforceDX plugin allowing you to control locale, language and timezone for the scratch org user",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Mikkel Flindt Heisterberg, @lekkim",
+  "author": "Mikkel Flindt Heisterberg, @lekkim, http://lekkimworld.com",
   "repository": "lekkimworld/sfdx-l18n-plugin",
-  "website": "http://lekkimworld.com",
+  "homepage": "https://github.com/lekkimworld/sfdx-l18n-plugin",
   "license": "MIT"
 }
