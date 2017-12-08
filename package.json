@@ -1,6 +1,6 @@
 {
   "name": "sfdx-l18n-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "SalesforceDX plugin allowing you to control locale, language and timezone for the scratch org user",
   "main": "index.js",
   "scripts": {
