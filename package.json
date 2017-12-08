@@ -9,5 +9,8 @@
   "author": "Mikkel Flindt Heisterberg, @lekkim, http://lekkimworld.com",
   "repository": "lekkimworld/sfdx-l18n-plugin",
   "homepage": "https://github.com/lekkimworld/sfdx-l18n-plugin",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "salesforce-alm": "^41.10.0"
+  }
 }
